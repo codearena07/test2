@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Supreme Thread - Get in touch for premium thread solutions.">
+    <meta name="keywords" content="contact, Supreme Thread, enquiry, Surat, thread manufacturer">
+    <meta name="author" content="Supreme Thread">
+    <title>Contact - Supreme Thread</title>
+    <link rel="shortcut icon" href="/SupremeThread/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/SupremeThread/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --primary: #1A3C40;
+            --secondary: #f9e79f;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --background: #f8f9fa;
+            --common-radius: 1.2rem;
+            --btn-radius: 2rem;
+            --underline-height: 0.35em;
+        }
+        
+        /* Common styles */
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--primary);
+            text-decoration: underline;
+            text-decoration-color: var(--primary);
+            text-underline-offset: var(--underline-height);
+            margin-bottom: 2rem;
+            margin-top: 1em;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .example-btn {
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.8em 2em;
+            border-radius: var(--btn-radius);
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+        
+        .example-btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+        
+        /* Responsive text sizes */
+        @media (max-width: 768px) {
+            .section-heading {
+                font-size: 1.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .example-btn {
+                font-size: 1rem;
+                padding: 0.7em 1.5em;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .section-heading {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .section-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 1.8rem;
+            }
+        }
+    </style>
+    <style>
+        /* Footer Styles */
+        .footer {
+            background-color: #1A3C40;
+            color: white;
+            padding: 40px 0 20px;
+            font-size: 14px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .footer-logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        
+        .footer-logo-text {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .footer-about {
+            margin-bottom: 15px;
+            line-height: 1.4;
+            color: #e0e0e0;
+            max-width: 400px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .footer-links-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        
+        .footer-links-column {
+            margin-bottom: 5px;
+        }
+        
+        .footer-links-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        
+        .footer-links-title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+        }
+        
+        .footer-links li {
+            position: relative;
+            padding-left: 0;
+        }
+        
+        .footer-links li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 13px;
+        }
+        
+        .footer-links li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #e0e0e0;
+            margin: 0;
+            font-size: 13px;
+        }
+        
+        .footer-contact-item i {
+            margin-top: 3px;
+            font-size: 12px;
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+            text-align: center;
+            font-size: 12px;
+        }
+        
+        .copyright {
+            color: #e0e0e0;
+            margin: 0;
+        }
+        
+        /* Responsive Footer */
+        @media (min-width: 576px) {
+            .footer-links-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .footer-main {
+                grid-template-columns: 1fr 2fr;
+            }
+            
+            .footer-links-section {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .footer-main {
+                grid-template-columns: 1fr 2fr;
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 575px) {
+            .footer {
+                padding: 30px 0 15px;
+            }
+            
+            .footer-links {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                gap: 12px;
+                padding-bottom: 5px;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            
+            .footer-links::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .footer-contact-item {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background font-sans text-text-primary">
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=80&q=80" alt="Supreme Thread Logo" class="logo-img">
+                <div class="logo-text">Supreme Thread</div>
+            </a>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+                    <li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
+                    <li class="nav-item"><a href="manufacturing.html" class="nav-link">Manufacturing</a></li>
+                    <li class="nav-item"><a href="industries.html" class="nav-link">Industries</a></li>
+                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <style>
+        /* Preloader Styles */
+        .preloader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .preloader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(26, 60, 64, 0.2);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+       /* Header & Navigation */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-menu);
+  background-color: var(--bg-color);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  height: 84px;
+  min-height: 84px;
+}
+
+.header-scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: var(--spacing-sm);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.logo-text {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+}
+
+.nav-item {
+  margin-left: var(--spacing-lg);
+  position: relative;
+}
+
+.nav-link {
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  color: var(--text-color);
+  transition: color var(--transition-fast);
+  padding: var(--spacing-sm) 0;
+  position: relative;
+}
+
+.nav-link:hover, 
+.nav-link:focus, 
+.nav-link.active {
+  color: var(--primary-color);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width var(--transition-normal);
+}
+
+.nav-link:hover::after, 
+.nav-link:focus::after, 
+.nav-link.active::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: var(--spacing-sm);
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: var(--primary-color);
+  margin: 4px 0;
+  transition: all var(--transition-fast);
+}
+
+.menu-toggle span.active {
+  background-color: var(--text-light);
+}
+
+@media (max-width: 991px) {
+  .header, .header-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 0;
+    z-index: 1100;
+    height: 72px;
+    min-height: 72px;
+  }
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1202;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  .logo {
+    margin-left: 8px;
+  }
+  .header-container {
+    position: relative;
+    min-width: 0;
+    max-width: 100vw;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    width: 80vw;
+    min-width: 240px;
+    max-width: 350px;
+    height: 100vh;
+    background: var(--primary-color);
+    box-shadow: 4px 0 32px rgba(26,60,64,0.09);
+    padding: 1.6rem 1rem 1.2rem 1rem;
+    gap: 0.25rem;
+    transition: right 0.35s cubic-bezier(.4,0,.2,1);
+    z-index: 1200;
+  }
+  .nav-menu.active {
+    right: 0;
+  }
+  .nav-item {
+    width: 100%;
+    margin: 0 0 0.7rem 0;
+  }
+  .nav-link {
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    padding: 0.7rem 0.7rem;
+    width: 100%;
+    display: block;
+    border-radius: 6px;
+    background: none;
+    text-align: left;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-link.active, .nav-link:focus, .nav-link:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+  }
+  .nav-link::after {
+    left: 0;
+    right: 0;
+    background: var(--secondary-color);
+    height: 2px;
+  }
+  .nav-link:hover::after, .nav-link:focus::after, .nav-link.active::after {
+    width: 100%;
+  }
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(26,60,64,0.10);
+    z-index: 1199;
+    transition: opacity 0.2s;
+  }
+  .nav-overlay.active {
+    display: block;
+    opacity: 1;
+  }
+}
+
+@media (min-width: 992px) {
+  .menu-toggle {
+    display: none !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .gallery-item img {
+    pointer-events: none !important;
+    touch-action: manipulation !important;
+  }
+}
+    </style>
+
+  <!-- Contact Us Section - Before Footer -->
+  <section class="contact-gallery-section">
+    <div class="contact-gallery-container">
+        <h2 class="section-heading" data-aos="fade-up">Get In Touch</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Have questions about our thread products or want to request samples? Contact our team today.</p>
+        
+        <div class="contact-gallery-wrapper">
+            <div class="contact-gallery-info" data-aos="fade-right" data-aos-delay="150">
+                <div class="contact-gallery-card">
+                    <h3 class="contact-gallery-title">Contact Information</h3>
+                    <p class="contact-gallery-desc">Reach out to Supreme Thread for premium thread solutions tailored to your specific needs.</p>
+                    
+                    <div class="contact-gallery-items">
+                        <div class="contact-gallery-item">
+                            <div class="contact-gallery-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-gallery-text">
+                                <h4>Our Location</h4>
+                                <p>123 Industrial Area, Surat, Gujarat, India - 395001</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-gallery-item">
+                            <div class="contact-gallery-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-gallery-text">
+                                <h4>Phone Number</h4>
+                                <p>+91 9876543210</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-gallery-item">
+                            <div class="contact-gallery-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-gallery-text">
+                                <h4>Email Address</h4>
+                                <p>info@supremethread.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-gallery-item">
+                            <div class="contact-gallery-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-gallery-text">
+                                <h4>Business Hours</h4>
+                                <p>Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-gallery-social">
+                        <a href="#" class="contact-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="contact-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="contact-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="contact-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-gallery-form-wrapper" data-aos="fade-left" data-aos-delay="200">
+                <form class="contact-gallery-form">
+                    <h3 class="contact-form-title">Send Us A Message</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="What's this about?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="contact-form-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Contact Gallery Section Styles */
+.contact-gallery-section {
+    padding: 5rem 0;
+    background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+    position: relative;
+}
+
+.contact-gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.contact-gallery-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+}
+
+/* Contact Info Card */
+.contact-gallery-card {
+    background: linear-gradient(135deg, #1A3C40 0%, #1D5C63 100%);
+    border-radius: 16px;
+    padding: 2.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    box-shadow: 0 12px 30px rgba(29, 92, 99, 0.15);
+}
+
+.contact-gallery-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.contact-gallery-desc {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+.contact-gallery-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.contact-gallery-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact-gallery-icon {
+    background-color: rgba(255, 255, 255, 0.15);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-gallery-icon i {
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.contact-gallery-text h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #fff;
+}
+
+.contact-gallery-text p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    line-height: 1.5;
+    color: #e0e0e0;
+}
+
+.contact-gallery-social {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.contact-social-link {
+    background-color: rgba(255, 255, 255, 0.15);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.contact-social-link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Contact Form */
+.contact-gallery-form-wrapper {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.contact-gallery-form {
+    padding: 2.5rem;
+}
+
+.contact-form-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 1.8rem;
+    color: #1A3C40;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #1A3C40;
+    box-shadow: 0 0 0 3px rgba(26, 60, 64, 0.1);
+    outline: none;
+}
+
+.contact-form-btn {
+    background: linear-gradient(135deg, #1A3C40 0%, #1D5C63 100%);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.contact-form-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(26, 60, 64, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .contact-gallery-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .contact-gallery-card {
+        padding: 2rem;
+    }
+    
+    .contact-gallery-form {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-gallery-section {
+        padding: 4rem 0;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .contact-gallery-title,
+    .contact-form-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-gallery-section {
+        padding: 3rem 0;
+    }
+    
+    .contact-gallery-card,
+    .contact-gallery-form {
+        padding: 1.5rem;
+    }
+    
+    .contact-gallery-title,
+    .contact-form-title {
+        font-size: 1.3rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .contact-gallery-desc {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .contact-gallery-items {
+        gap: 1.2rem;
+    }
+    
+    .contact-gallery-icon {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .contact-gallery-text h4 {
+        font-size: 1rem;
+    }
+    
+    .contact-gallery-text p {
+        font-size: 0.9rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+    
+    .contact-form-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+</style>
+
+<!-- Map Section -->
+<section id="map-section">
+    <div class="container">
+        <h2 class="section-heading">Our Location</h2>
+        <p class="section-subtitle">Visit our factory in Surat to explore our thread manufacturing facilities and discuss business opportunities.</p>
+        
+        <div class="map-wrapper">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119066.44161502192!2d72.7571802887207!3d21.19519848520342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0xfe4558290938b042!2sSurat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1715082020425!5m2!1sen!2sin" 
+                   width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Map Section Styles */
+#map-section {
+    padding: 5rem 0;
+    background-color: #f8f9fa;
+}
+
+#map-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.map-wrapper {
+    margin-top: 2rem;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(29, 92, 99, 0.15);
+}
+
+@media (max-width: 768px) {
+    #map-section {
+        padding: 3rem 0;
+    }
+}
+
+@media (max-width: 576px) {
+    #map-section {
+        padding: 2.5rem 0;
+    }
+    
+    .map-wrapper {
+        margin-top: 1.5rem;
+    }
+}
+</style>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Animate entrance
+      if (window.gsap) {
+        gsap.from('.contact-unique-card', {y: 60, opacity: 0, duration: 1, ease: 'power2.out'});
+        gsap.from('.contact-unique-form-panel', {x: -60, opacity: 0, duration: 0.8, delay: 0.2, ease: 'power2.out'});
+        gsap.from('.contact-unique-details-panel', {x: 60, opacity: 0, duration: 0.8, delay: 0.3, ease: 'power2.out'});
+        gsap.from('.contact-unique-map-card', {y: 60, opacity: 0, duration: 1, delay: 0.4, ease: 'power2.out'});
+        
+        // Map section animation with ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Animate map section
+        gsap.from('#map-section .section-heading', {
+          scrollTrigger: {
+            trigger: '#map-section',
+            start: 'top 80%'
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power2.out'
+        });
+        
+        gsap.from('#map-section .section-subtitle', {
+          scrollTrigger: {
+            trigger: '#map-section',
+            start: 'top 80%'
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+          delay: 0.2,
+          ease: 'power2.out'
+        });
+        
+        gsap.from('#map-section .map-wrapper', {
+          scrollTrigger: {
+            trigger: '#map-section',
+            start: 'top 80%'
+          },
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          delay: 0.4,
+          ease: 'power2.out'
+        });
+      }
+      // Animated form button
+      const form = document.getElementById('contactForm');
+      const msgDiv = document.getElementById('contactFormMsg');
+      const btn = form.querySelector('.example-btn');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        msgDiv.textContent = '';
+        let valid = true;
+        let name = form.name.value.trim();
+        let email = form.email.value.trim();
+        let message = form.message.value.trim();
+        if (!name || !email || !message) {
+          valid = false;
+          msgDiv.textContent = 'Please fill in all required fields.';
+          msgDiv.style.color = '#d32f2f';
+        } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+          valid = false;
+          msgDiv.textContent = 'Please enter a valid email address.';
+          msgDiv.style.color = '#d32f2f';
+        }
+        if (valid) {
+          setTimeout(function() {
+            msgDiv.textContent = 'Thank you! Your message has been sent successfully. We are here to assist and address your inquiries.';
+            msgDiv.style.color = '#388e3c';
+            form.reset();
+          }, 1200);
+        }
+      });
+    });
+    </script>
+    
+    <!-- Footer: Desktop/Laptop View (PC Only) -->
+    <footer class="footer pc-footer-only">
+      <div class="container footer-container">
+          <div class="footer-column">
+              <div class="footer-logo">
+                  <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=80&q=80" alt="Supreme Thread Logo" class="w-10 h-10 object-cover rounded-full" style="border-radius:50%;width:40px;height:40px;object-fit:cover;">
+              </div>
+              <div class="footer-about">
+                  <p>Supreme Thread is a leading manufacturer of high-quality threads based in Surat. With advanced technology and commitment to excellence, we deliver premium threading solutions for various industries.</p>
+              </div>
+              <div class="social-links">
+                  <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+          <div class="footer-column">
+              <h3 class="footer-title footer-title-light">Quick Links</h3>
+              <ul class="footer-links">
+                  <li class="footer-link"><a href="index.html">Home</a></li>
+                  <li class="footer-link"><a href="about.html">About Us</a></li>
+                  <li class="footer-link"><a href="products.html">Products</a></li>
+                  <li class="footer-link"><a href="manufacturing.html">Manufacturing</a></li>
+                  <li class="footer-link"><a href="industries.html">Industries</a></li>
+                  <li class="footer-link"><a href="gallery.html">Gallery</a></li>
+                  <li class="footer-link"><a href="contact.html">Contact</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h3 class="footer-title footer-title-light">Products</h3>
+              <ul class="footer-links">
+                  <li class="footer-link"><a href="products.html#cotton">Cotton Threads</a></li>
+                  <li class="footer-link"><a href="products.html#polyester">Polyester Threads</a></li>
+                  <li class="footer-link"><a href="products.html#nylon">Nylon Threads</a></li>
+                  <li class="footer-link"><a href="products.html#blended">Blended Threads</a></li>
+                  <li class="footer-link"><a href="products.html#embroidery">Embroidery Threads</a></li>
+                  <li class="footer-link"><a href="products.html#industrial">Industrial Threads</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h3 class="footer-title footer-title-light">Contact Us</h3>
+              <div class="footer-contact-item"><i class="fas fa-map-marker-alt footer-contact-icon"></i><span>123 Industrial Area, Surat, Gujarat, India - 395001</span></div>
+              <div class="footer-contact-item"><i class="fas fa-phone footer-contact-icon"></i><span>+91 9876543210</span></div>
+              <div class="footer-contact-item"><i class="fas fa-envelope footer-contact-icon"></i><span>info@supremethread.com</span></div>
+          </div>
+      </div>
+      
+  </footer>
+  <!-- Footer: Mobile View (Grid Layout, Mobile Only) -->
+  <footer class="footer mobile-footer-grid">
+    <div class="mobile-footer-wrapper">
+      <!-- Section 1: Logo & Description -->
+      <div class="footer-mobile-logo-desc col-span-5 row-span-2">
+        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=80&q=80" alt="Supreme Thread Logo" class="footer-mobile-logo">
+        <div class="footer-mobile-desc">Supreme Thread is a leading manufacturer of high-quality threads based in Surat, delivering premium threading solutions for various industries.</div>
+      </div>
+      <!-- Section 2/3/4: Quick Links, Social, Products in a row -->
+      <div class="footer-mobile-row">
+        <div class="footer-mobile-quicklinks">
+          <h3 class="footer-mobile-heading">Quick Links</h3>
+          <ul class="footer-mobile-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="manufacturing.html">Manufacturing</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-mobile-social">
+          <div class="footer-mobile-social-icons">
+            <a href="#" class="footer-mobile-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="footer-mobile-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="footer-mobile-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="footer-mobile-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-mobile-products">
+          <h3 class="footer-mobile-heading">Products</h3>
+          <ul class="footer-mobile-links">
+            <li><a href="products.html#cotton">Cotton Threads</a></li>
+            <li><a href="products.html#polyester">Polyester Threads</a></li>
+            <li><a href="products.html#nylon">Nylon Threads</a></li>
+            <li><a href="products.html#blended">Blended Threads</a></li>
+            <li><a href="products.html#embroidery">Embroidery Threads</a></li>
+            <li><a href="products.html#industrial">Industrial Threads</a></li>
+            <li><a href="products.html#bonded">Bonded Nylon Thread</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Section 5: Info (Address, Email, Phone) -->
+      <div class="footer-mobile-info col-span-5 row-span-2 row-start-7">
+        <div class="footer-mobile-address"><i class="fas fa-map-marker-alt"></i> 123 Industrial Area, Surat, Gujarat, India - 395001</div>
+        <div class="footer-mobile-phone"><i class="fas fa-phone"></i> +91 9876543210</div>
+        <div class="footer-mobile-email"><i class="fas fa-envelope"></i> info@supremethread.com</div>
+      </div>
+      <!-- Section 6: Copyright -->
+      
+    </div>
+  </footer>
+  <style>
+    /* Desktop footer: show on desktop, hide on mobile */
+    .pc-footer-only { display: block; }
+    @media (max-width: 768px) {
+      .pc-footer-only { display: none !important; }
+    }
+    /* Mobile footer: hide on desktop, show on mobile */
+    .mobile-footer-grid { display: none; }
+    @media (max-width: 768px) {
+      .mobile-footer-grid { display: block !important; }
+    }
+  </style>
+
+<style>
+/* Footer */
+.footer {
+background-color: var(--primary-color);
+color: var(--text-light);
+padding: var(--spacing-xl) 0;
+}
+
+.footer-container {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: var(--spacing-xl);
+}
+
+.footer-logo {
+margin-bottom: var(--spacing-md);
+}
+
+.footer-logo img {
+height: 40px;
+}
+
+.footer-about {
+margin-bottom: var(--spacing-lg);
+}
+
+.social-links {
+display: flex;
+gap: var(--spacing-sm);
+}
+
+.social-link {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 36px;
+height: 36px;
+background-color: rgba(255, 255, 255, 0.1);
+border-radius: var(--radius-round);
+color: var(--text-light);
+transition: background-color var(--transition-fast);
+}
+
+.social-link:hover {
+background-color: var(--secondary-color);
+color: var(--text-light);
+}
+
+.footer-title {
+font-size: var(--font-size-lg);
+margin-bottom: var(--spacing-md);
+position: relative;
+padding-bottom: var(--spacing-sm);
+}
+
+.footer-title::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 40px;
+height: 2px;
+background-color: var(--secondary-color);
+}
+
+.footer-links {
+list-style: none;
+}
+
+.footer-link {
+margin-bottom: var(--spacing-sm);
+}
+
+.footer-link a {
+color: rgba(255, 255, 255, 0.8);
+transition: color var(--transition-fast);
+}
+
+.footer-link a:hover {
+color: var(--text-light);
+padding-left: var(--spacing-xs);
+}
+
+.footer-contact-item {
+display: flex;
+margin-bottom: var(--spacing-sm);
+}
+
+.footer-contact-icon {
+margin-right: var(--spacing-sm);
+color: var(--secondary-color);
+}
+
+.footer-bottom {
+margin-top: var(--spacing-xl);
+padding-top: var(--spacing-md);
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+text-align: center;
+}
+
+.footer-title-light {
+color: #f6f6f6 !important;
+text-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+</style>
+
+    <!-- JavaScript -->
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            preloader.classList.add('hide');
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenuContainer = document.querySelector('.nav-menu-container');
+        
+        // Create menu overlay element
+        const menuOverlay = document.createElement('div');
+        menuOverlay.classList.add('menu-overlay');
+        document.body.appendChild(menuOverlay);
+        
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenuContainer.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            
+            // Prevent scrolling when menu is open
+            if (navMenuContainer.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+        
+        menuOverlay.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            navMenuContainer.classList.remove('active');
+            this.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Close menu when clicking menu items (for mobile)
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                navMenuContainer.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
+</body>
+</html>

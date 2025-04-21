@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Supreme Thread Products - Explore our range of premium cotton, polyester, nylon, blended, embroidery, and industrial threads.">
+    <meta name="keywords" content="products, threads, cotton, polyester, nylon, blended, embroidery, industrial, Supreme Thread">
+    <meta name="author" content="Supreme Thread">
+    <title>Products - Supreme Thread</title>
+    <link rel="shortcut icon" href="/SupremeThread/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/SupremeThread/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- AOS Animation Library (if used) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <style>
+        @keyframes marquee-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .feature-marquee-container { position: relative; overflow: hidden; margin: 0 auto 2rem auto; max-width: 100vw; padding: 0 2vw; }
+        .feature-marquee { will-change: transform; }
+        .feature-gradient-left, .feature-gradient-right { position: absolute; top: 0; bottom: 0; width: 60px; pointer-events: none; z-index: 2; }
+        .feature-gradient-left { left: 0; background: linear-gradient(90deg, #f9f6f2 85%, rgba(249,246,242,0) 100%); }
+        .feature-gradient-right { right: 0; background: linear-gradient(270deg, #f9f6f2 85%, rgba(249,246,242,0) 100%); }
+        /* --- Product Page Specific Styles --- */
+        .product-filter {
+            margin-bottom: var(--spacing-xl);
+        }
+        .filter-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            list-style: none;
+            padding: 0;
+        }
+        .filter-tab {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--bg-color);
+            border: 1px solid var(--bg-dark);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .filter-tab:hover {
+            background-color: var(--bg-light);
+        }
+        .filter-tab.active {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            border-color: var(--primary-color);
+        }
+        .product-carousel {
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .product-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.45s cubic-bezier(.4,2,.6,1), box-shadow 0.35s, border 0.3s, opacity 0.3s;
+            background: var(--bg-color);
+            opacity: 0.85;
+            z-index: 1;
+        }
+        .product-card.active-center {
+            transform: scale(1.18) translateY(-16px);
+            z-index: 2;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.22), 0 0 0 2px var(--primary-color);
+            border: 2.5px solid var(--primary-color);
+            background: var(--bg-color);
+            opacity: 1;
+            transition: transform 0.5s cubic-bezier(.4,2,.6,1), box-shadow 0.35s, border 0.3s, opacity 0.3s;
+        }
+        .product-card.active-center:hover {
+            transform: scale(1.23) translateY(-28px);
+            box-shadow: 0 16px 56px 0 rgba(0,0,0,0.28), 0 0 0 4px var(--primary-color);
+            border-color: var(--accent-color, #f7b801);
+            opacity: 1;
+        }
+        .product-card.side-fade {
+            opacity: 0.75;
+            transform: scale(0.92);
+            filter: none;
+            z-index: 1;
+        }
+        .product-card:not(.active-center):not(.side-fade) {
+            opacity: 0.6;
+            transform: scale(0.85);
+            filter: none;
+            z-index: 0;
+        }
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+        }
+        .product-image {
+            max-width: 180px;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            margin: auto;
+            display: block;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+        }
+        .product-content {
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .product-title {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-sm);
+        }
+        .product-description {
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--spacing-md);
+        }
+        .product-specs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-md);
+        }
+        .product-spec {
+            background-color: var(--bg-light);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+        }
+        .swiper-button-prev, .swiper-button-next {
+            color: var(--primary-color);
+            background-color: var(--bg-color);
+            border: 1px solid var(--bg-dark);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-sm);
+            transition: background-color var(--transition-fast);
+        }
+        .swiper-button-prev:hover, .swiper-button-next:hover {
+            background-color: var(--bg-light);
+        }
+        /* Feature Marquee Section for Why Choose Our Threads */
+        .feature-marquee-container {
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto 2rem auto;
+            max-width: 100vw;
+            padding: 0 2vw;
+        }
+        .feature-marquee {
+            display: flex;
+            align-items: stretch;
+            gap: 1.2rem;
+            width: max-content;
+            min-width: 100%;
+            animation: marqueeMove 22s linear infinite;
+        }
+        .feature-marquee:hover {
+            animation-play-state: paused;
+        }
+        .feature-block {
+            background: #fff;
+            border-radius: 1.1rem;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+            padding: 1.3rem 1.2rem 1.1rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 150px;
+            max-width: 180px;
+            width: 160px;
+            min-height: 120px;
+            height: 120px;
+            justify-content: center;
+            transition: box-shadow 0.2s;
+        }
+        .feature-block .feature-icon {
+            font-size: 2.1rem;
+            margin-bottom: 0.6rem;
+        }
+        .feature-block .feature-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        @keyframes marqueeMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @media (max-width: 700px) {
+            .feature-block {
+                min-width: 120px;
+                max-width: 120px;
+                width: 120px;
+                min-height: 95px;
+                height: 95px;
+                padding: 0.8rem 0.5rem 0.7rem 0.5rem;
+            }
+            .feature-block .feature-icon {
+                font-size: 1.5rem;
+                margin-bottom: 0.3rem;
+            }
+            .feature-block .feature-title {
+                font-size: 0.93rem;
+            }
+        }
+        /* Special font size for specific product cards */
+        .product-card.special-font-size .product-title {
+            font-size: var(--font-size-md);
+        }
+        .product-card.special-font-size .product-description {
+            font-size: var(--font-size-xs);
+        }
+        /* Redesigned Swiper Product Section Styles */
+        .product-section {
+            padding: var(--spacing-xxl) 0;
+        }
+        .product-swiper {
+            margin-top: var(--spacing-lg);
+        }
+        .product-card-modern {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            background: var(--bg-color);
+        }
+        .product-img-modern {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+        }
+        .product-info-modern {
+            padding: var(--spacing-md);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
+        }
+        .product-title-modern {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-sm);
+        }
+        .product-desc-modern {
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--spacing-md);
+        }
+        .product-specs-modern {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-md);
+        }
+        .product-specs-modern li {
+            background-color: var(--bg-light);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+        }
+        .btn-outline-modern {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--primary-color);
+            border-radius: var(--radius-sm);
+            color: var(--primary-color);
+            background-color: var(--bg-color);
+            transition: background-color var(--transition-fast);
+        }
+        .btn-outline-modern:hover {
+            background-color: var(--bg-light);
+        }
+        .product-card-modern {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .learn-more-btn {
+            margin-top: auto;
+            align-self: center;
+        }
+        /* Product Detail Modal */
+        .product-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .product-modal-content {
+            position: relative;
+            background-color: var(--bg-color);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            z-index: 2;
+            max-width: 570px;
+            width: 85vw;
+        }
+        .product-modal-close {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            font-size: var(--font-size-lg);
+            cursor: pointer;
+            display: none;
+        }
+        .modal-close-btn {
+            margin: 0.5rem auto 0 auto;
+            display: block;
+            font-size: 1.08rem;
+            padding: 0.55em 1.6em;
+            border: none;
+            background: var(--primary-color, #e4572e);
+            color: #fff;
+            border-radius: 1.3em;
+            cursor: pointer;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+            transition: background 0.18s;
+        }
+        .modal-close-btn:hover {
+            background: #c13c18;
+        }
+        .product-modal-body {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+        .product-modal-image {
+            width: 40%;
+        }
+        .product-modal-info {
+            width: 60%;
+        }
+        .product-modal-info h3 {
+            font-size: var(--font-size-xxl);
+            margin-bottom: var(--spacing-md);
+        }
+        .product-modal-info p {
+            font-size: var(--font-size-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        .product-modal-info ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-xs);
+        }
+        .product-modal-info li {
+            background-color: var(--bg-light);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+        }
+        .product-modal-tags {
+            display: none;
+            margin-bottom: var(--spacing-sm);
+        }
+        .product-modal-tags .modal-tag {
+            background-color: var(--bg-light);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            margin-right: var(--spacing-xs);
+        }
+        .product-modal-details {
+            display: none;
+            font-size: var(--font-size-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        /* Mobile Product Card Styles */
+        .mobile-products-container {
+            display: none;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: var(--spacing-lg);
+            position: relative;
+        }
+        .mobile-products-scroll {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+        .mobile-product-card {
+            flex: 0 0 calc((100% - var(--spacing-md)) / 2);
+            width: calc((100% - var(--spacing-md)) / 2);
+            height: 280px;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            background: var(--bg-color);
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(.4,2,.6,1), box-shadow 0.2s;
+            justify-content: space-between;
+        }
+        .mobile-product-card:hover {
+            transform: translateY(-8px) scale(1.04) rotate(-1deg);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+        }
+        .mobile-product-card:active {
+            transform: scale(0.98);
+        }
+        .mobile-product-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            transition: box-shadow 0.2s;
+        }
+        .mobile-product-title {
+            font-size: var(--font-size-md);
+            margin-bottom: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+        .mobile-product-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--primary-color);
+            border-radius: var(--radius-sm);
+            color: var(--primary-color);
+            background-color: var(--bg-color);
+            transition: background-color var(--transition-fast), color 0.2s;
+        }
+        .mobile-product-btn:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        @media (max-width: 768px) {
+            .desktop-only {
+                display: none;
+            }
+            .mobile-only {
+                display: block;
+            }
+        }
+        /* Fullscreen Modal for Mobile */
+        .product-modal {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: rgba(0,0,0,0.88) !important;
+            z-index: 9999 !important;
+            justify-content: center !important;
+            align-items: center !important;
+            animation: modalIn 0.38s cubic-bezier(.4,2,.6,1);
+        }
+        .product-modal-content {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem 1.2rem;
+            max-width: 95vw;
+            width: 100%;
+            max-height: 92vh;
+            overflow-y: auto;
+            box-shadow: 0 18px 64px rgba(0,0,0,0.25);
+            animation: modalContentIn 0.45s cubic-bezier(.4,2,.6,1);
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.94); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes modalContentIn {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Product Modal */
+        .product-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .product-modal-content {
+            position: relative;
+            background-color: var(--bg-color);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            z-index: 2;
+            max-width: 600px;
+            width: 90vw;
+        }
+        .product-modal-close {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            font-size: var(--font-size-lg);
+            cursor: pointer;
+            display: none;
+        }
+        .product-modal-body {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+        .product-modal-image {
+            width: 40%;
+        }
+        .product-modal-info {
+            width: 60%;
+        }
+        .product-modal-info h3 {
+            font-size: var(--font-size-xxl);
+            margin-bottom: var(--spacing-md);
+        }
+        .product-modal-info p {
+            font-size: var(--font-size-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        .product-modal-info ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-xs);
+        }
+        .product-modal-info li {
+            background-color: var(--bg-light);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+        }
+        .product-modal-tags {
+            display: none;
+            margin-bottom: var(--spacing-sm);
+        }
+        .product-modal-tags .modal-tag {
+            background-color: var(--bg-light);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            margin-right: var(--spacing-xs);
+        }
+        .product-modal-details {
+            display: none;
+            font-size: var(--font-size-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        /* Modal for Mobile */
+        .modal-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: #222;
+            cursor: pointer;
+            z-index: 10001;
+            transition: color 0.2s;
+        }
+        .modal-close:hover {
+            color: var(--primary-color, #e4572e);
+        }
+        .product-modal-content {
+            position: relative;
+            text-align: center;
+        }
+        .product-modal-content img {
+            width: 100%;
+            max-width: 260px;
+            display: block;
+            margin: 0 auto 1rem auto;
+            border-radius: 1rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+        }
+        .product-modal-content h2 {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 0.7rem;
+        }
+        .product-modal-content p {
+            text-align: center;
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.5;
+        }
+        .modal-tags {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        .modal-tag {
+            background: var(--bg-light,#f2f2f2);
+            color: #333;
+            border-radius: 12px;
+            font-size: 0.92rem;
+            padding: 0.22em 0.9em;
+            letter-spacing: 0.01em;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.06);
+        }
+        @media (max-width: 700px) {
+            .section-title.headline-animated, .section-title { font-size: 1.45rem !important; }
+            .why-choose-title, #whyThreadHeading, .why-thread-title { font-size: 1.25rem !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader"><div class="spinner"></div></div>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=80&q=80" alt="Supreme Thread Logo" class="w-10 h-10 object-cover rounded-full" style="border-radius:50%;width:40px;height:40px;object-fit:cover;">
+                <div class="logo-text">Supreme Thread</div>
+            </a>
+            <button class="menu-toggle"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="products.html" class="nav-link active">Products</a></li>
+                <li class="nav-item"><a href="manufacturing.html" class="nav-link">Manufacturing</a></li>
+                <li class="nav-item"><a href="industries.html" class="nav-link">Industries</a></li>
+                <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- Main Content Starts -->
+    <!-- Page Banner -->
+    <section class="page-banner" style="background-image: url('https://images.unsplash.com/photo-1468421870903-4df1664ac249?auto=format&fit=crop&w=1200&q=80');">
+        <div class="container">
+            <h1 class="page-title">Our Products</h1>
+        </div>
+    </section>
+    <!-- Redesigned Swiper Product Section Start -->
+    <section class="section product-section">
+        <div class="container">
+            <h2 class="section-title text-center headline-animated" id="productsHeading">
+              <span class="headline-text">Our Products<span class="headline-underline"></span></span>
+            </h2>
+            
+            <!-- Desktop Swiper (hidden on mobile) -->
+            <div class="swiper product-swiper desktop-only">
+                <div class="swiper-wrapper">
+                    <!-- Product Card 1 -->
+                    <div class="swiper-slide">
+                        <div class="product-card-modern">
+                            <img src="https://images.unsplash.com/photo-1468421870903-4df1664ac249?auto=format&fit=crop&w=400&q=80" alt="Core-Spun Thread" class="product-img-modern">
+                            <div class="product-info-modern">
+                                <h3 class="product-title-modern">Core-Spun Thread</h3>
+                                <p class="product-desc-modern">Polyester core wrapped with cotton for strength and softness. Ideal for garments.</p>
+                                <a href="#" class="example-btn learn-more-btn" data-tags="Cotton, Durable, Garment">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 2 -->
+                    <div class="swiper-slide">
+                        <div class="product-card-modern">
+                            <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=400&q=80" alt="Rayon Embroidery Thread" class="product-img-modern">
+                            <div class="product-info-modern">
+                                <h3 class="product-title-modern">Rayon Embroidery Thread</h3>
+                                <p class="product-desc-modern">Exceptional luster and color vibrancy for decorative stitches and embroidery.</p>
+                                <a href="#" class="example-btn learn-more-btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 3 -->
+                    <div class="swiper-slide">
+                        <div class="product-card-modern">
+                            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Technical Thread" class="product-img-modern">
+                            <div class="product-info-modern">
+                                <h3 class="product-title-modern">Technical Thread</h3>
+                                <p class="product-desc-modern">Specially developed for industrial applications with flame retardance and durability.</p>
+                                <a href="#" class="example-btn learn-more-btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 4 -->
+                    <div class="swiper-slide">
+                        <div class="product-card-modern">
+                            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Premium Cotton Thread" class="product-img-modern">
+                            <div class="product-info-modern">
+                                <h3 class="product-title-modern">Premium Cotton Thread</h3>
+                                <p class="product-desc-modern">Finest long-staple cotton fibers for exceptional softness and sheen.</p>
+                                <a href="#" class="example-btn learn-more-btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 5 -->
+                    <div class="swiper-slide">
+                        <div class="product-card-modern">
+                            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" alt="Mercerized Cotton Thread" class="product-img-modern">
+                            <div class="product-info-modern">
+                                <h3 class="product-title-modern">Mercerized Cotton Thread</h3>
+                                <p class="product-desc-modern">Special treatment enhances strength, luster, and color absorption.</p>
+                                <a href="#" class="example-btn learn-more-btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 6 -->
+                    <div class="swiper-slide">
+                        <div class="product-card-modern">
+                            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="All-Purpose Polyester Thread" class="product-img-modern">
+                            <div class="product-info-modern">
+                                <h3 class="product-title-modern">All-Purpose Polyester Thread</h3>
+                                <p class="product-desc-modern">Versatile thread offering strength and durability for many applications.</p>
+                                <a href="#" class="example-btn learn-more-btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 7 -->
+                    <div class="swiper-slide">
+                        <div class="product-card-modern">
+                            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Heavy-Duty Polyester Thread" class="product-img-modern">
+                            <div class="product-info-modern">
+                                <h3 class="product-title-modern">Heavy-Duty Polyester Thread</h3>
+                                <p class="product-desc-modern">Engineered for maximum strength—perfect for upholstery and outdoor use.</p>
+                                <a href="#" class="example-btn learn-more-btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 8 -->
+                    <div class="swiper-slide">
+                        <div class="product-card-modern">
+                            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" alt="Standard Nylon Thread" class="product-img-modern">
+                            <div class="product-info-modern">
+                                <h3 class="product-title-modern">Standard Nylon Thread</h3>
+                                <p class="product-desc-modern">Excellent elasticity and strength for stretchy fabrics and leather goods.</p>
+                                <a href="#" class="example-btn learn-more-btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 9 -->
+                    <div class="swiper-slide">
+                        <div class="product-card-modern">
+                            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" alt="Bonded Nylon Thread" class="product-img-modern">
+                            <div class="product-info-modern">
+                                <h3 class="product-title-modern">Bonded Nylon Thread</h3>
+                                <p class="product-desc-modern">Treated with resins for increased strength and abrasion resistance.</p>
+                                <a href="#" class="example-btn learn-more-btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="swiper-pagination"></div> -->
+            </div>
+            
+            <!-- Mobile Product Scroll (visible only on mobile) -->
+            <div class="mobile-products-container mobile-only">
+                <div class="mobile-products-scroll">
+                    <!-- Product Card 1 -->
+                    <div class="mobile-product-card" data-product="Core-Spun Thread">
+                        <img src="https://images.unsplash.com/photo-1468421870903-4df1664ac249?auto=format&fit=crop&w=400&q=80" alt="Core-Spun Thread" class="mobile-product-img">
+                        <h3 class="mobile-product-title">Core-Spun Thread</h3>
+                        <button class="example-btn mobile-product-btn">View Details</button>
+                    </div>
+                    
+                    <!-- Product Card 2 -->
+                    <div class="mobile-product-card" data-product="Rayon Embroidery Thread">
+                        <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=400&q=80" alt="Rayon Embroidery Thread" class="mobile-product-img">
+                        <h3 class="mobile-product-title">Rayon Embroidery Thread</h3>
+                        <button class="example-btn mobile-product-btn">View Details</button>
+                    </div>
+                    
+                    <!-- Product Card 3 -->
+                    <div class="mobile-product-card" data-product="Technical Thread">
+                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Technical Thread" class="mobile-product-img">
+                        <h3 class="mobile-product-title">Technical Thread</h3>
+                        <button class="example-btn mobile-product-btn">View Details</button>
+                    </div>
+                    
+                    <!-- Product Card 4 -->
+                    <div class="mobile-product-card" data-product="Premium Cotton Thread">
+                        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Premium Cotton Thread" class="mobile-product-img">
+                        <h3 class="mobile-product-title">Premium Cotton Thread</h3>
+                        <button class="example-btn mobile-product-btn">View Details</button>
+                    </div>
+                    
+                    <!-- Product Card 5 -->
+                    <div class="mobile-product-card" data-product="Mercerized Cotton Thread">
+                        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" alt="Mercerized Cotton Thread" class="mobile-product-img">
+                        <h3 class="mobile-product-title">Mercerized Cotton Thread</h3>
+                        <button class="example-btn mobile-product-btn">View Details</button>
+                    </div>
+                    
+                    <!-- Product Card 6 -->
+                    <div class="mobile-product-card" data-product="All-Purpose Polyester Thread">
+                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="All-Purpose Polyester Thread" class="mobile-product-img">
+                        <h3 class="mobile-product-title">All-Purpose Polyester Thread</h3>
+                        <button class="example-btn mobile-product-btn">View Details</button>
+                    </div>
+                    
+                    <!-- Product Card 7 -->
+                    <div class="mobile-product-card" data-product="Heavy-Duty Polyester Thread">
+                        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Heavy-Duty Polyester Thread" class="mobile-product-img">
+                        <h3 class="mobile-product-title">Heavy-Duty Polyester Thread</h3>
+                        <button class="example-btn mobile-product-btn">View Details</button>
+                    </div>
+                    
+                    <!-- Product Card 8 -->
+                    <div class="mobile-product-card" data-product="Standard Nylon Thread">
+                        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" alt="Standard Nylon Thread" class="mobile-product-img">
+                        <h3 class="mobile-product-title">Standard Nylon Thread</h3>
+                        <button class="example-btn mobile-product-btn">View Details</button>
+                    </div>
+                    
+                    <!-- Product Card 9 -->
+                    <div class="mobile-product-card" data-product="Bonded Nylon Thread">
+                        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" alt="Bonded Nylon Thread" class="mobile-product-img">
+                        <h3 class="mobile-product-title">Bonded Nylon Thread</h3>
+                        <button class="example-btn mobile-product-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Redesigned Swiper Product Section End -->
+    <!-- Modal HTML for Product Details -->
+    <div id="product-modal" class="product-modal" style="display:none;">
+      <div class="product-modal-content">
+        <button id="modal-close-btn" class="modal-close" aria-label="Close" style="top: 18px; right: 18px; position: absolute; font-size: 2rem; background: #fff; border: 1.5px solid #eee; color: #222; cursor: pointer; z-index: 10001; border-radius: 50%; width: 44px; height: 44px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); display: flex; align-items: center; justify-content: center; transition: background 0.18s, box-shadow 0.18s; padding: 0; ">&times;</button>
+        <img id="modal-img" src="" alt="Product Image" style="max-width:220px;margin:0 auto 1.2rem auto;display:block;border-radius:1rem;box-shadow:0 4px 24px rgba(0,0,0,0.09);">
+        <h3 id="modal-title" style="font-size:1.35rem;font-weight:700;margin-bottom:0.7rem;text-align:center;"></h3>
+        <p id="modal-desc" style="font-size:1.05rem;color:#5f5e5e;text-align:center;"></p>
+        <div id="modal-tags" class="modal-tags" style="margin-top:1.1rem;display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;"></div>
+      </div>
+    </div>
+    <!-- Product Features Section -->
+    <section class="section" style="background-color: var(--bg-light);">
+        <div class="container">
+            <h2 class="section-title text-center headline-animated" id="whyThreadsHeading">
+              <span class="headline-text">Why Choose Our Threads<span class="headline-underline"></span></span>
+            </h2>
+            <p class="text-center mb-5">Our products stand out for their exceptional quality and performance</p>
+            <div class="feature-marquee-container">
+                <div class="feature-marquee infinite-marquee">
+                    <div class="feature-block"><span class="feature-icon">🏅</span><span class="feature-title">Premium Quality</span></div>
+                    <div class="feature-block"><span class="feature-icon">🎨</span><span class="feature-title">Color Consistency</span></div>
+                    <div class="feature-block"><span class="feature-icon">🛠️</span><span class="feature-title">Technical Excellence</span></div>
+                    <div class="feature-block"><span class="feature-icon">🌱</span><span class="feature-title">Eco-Friendly Options</span></div>
+                    <div class="feature-block"><span class="feature-icon">⚡</span><span class="feature-title">High Performance</span></div>
+                    <div class="feature-block"><span class="feature-icon">🔒</span><span class="feature-title">Reliability</span></div>
+                    <!-- DUPLICATE for seamless infinite loop -->
+                    <div class="feature-block"><span class="feature-icon">🏅</span><span class="feature-title">Premium Quality</span></div>
+                    <div class="feature-block"><span class="feature-icon">🎨</span><span class="feature-title">Color Consistency</span></div>
+                    <div class="feature-block"><span class="feature-icon">🛠️</span><span class="feature-title">Technical Excellence</span></div>
+                    <div class="feature-block"><span class="feature-icon">🌱</span><span class="feature-title">Eco-Friendly Options</span></div>
+                    <div class="feature-block"><span class="feature-icon">⚡</span><span class="feature-title">High Performance</span></div>
+                    <div class="feature-block"><span class="feature-icon">🔒</span><span class="feature-title">Reliability</span></div>
+                </div>
+                <div class="feature-gradient-left"></div>
+                <div class="feature-gradient-right"></div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section -->
+    <section class="section" style="background-image: url('https://images.unsplash.com/photo-1468421870903-4df1664ac249?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; position: relative; color: var(--bg-color); text-align: center; padding: var(--spacing-xxl) 0;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 0;"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <h2 style="font-size: var(--font-size-xxl); margin-bottom: var(--spacing-lg); color: #e3e8f7;">Custom Thread Solutions</h2>
+            <p style="margin-bottom: var(--spacing-xl); max-width: 800px; margin-left: auto; color: #e3e8f7; margin-right: auto;">Can't find exactly what you're looking for? We specialize in developing custom thread solutions to meet specific industry requirements. Contact our team to discuss your unique needs.</p>
+            <a href="contact.html" class="example-btn" style="min-width:180px;font-size:1.08rem;font-weight:600;letter-spacing:0.01em;margin-top:18px;">Contact Us</a>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-main">
+                <div class="footer-logo-section">
+                    <div class="footer-logo">
+                        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=80&q=80" alt="Supreme Thread Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">Supreme Thread</span>
+                    </div>
+                    <p class="footer-about">Supreme Thread is a leading manufacturer of high-quality threads based in Surat. With advanced technology and commitment to excellence, we deliver premium threading solutions for various industries.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links-section">
+                    <div class="footer-links-column">
+                        <h3 class="footer-links-title">Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="products.html">Products</a></li>
+                            <li><a href="manufacturing.html">Manufacturing</a></li>
+                            <li><a href="industries.html">Industries</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3 class="footer-links-title">Products</h3>
+                        <ul class="footer-links">
+                            <li><a href="products.html#cotton">Cotton Threads</a></li>
+                            <li><a href="products.html#polyester">Polyester Threads</a></li>
+                            <li><a href="products.html#nylon">Nylon Threads</a></li>
+                            <li><a href="products.html#blended">Blended Threads</a></li>
+                            <li><a href="products.html#embroidery">Embroidery Threads</a></li>
+                            <li><a href="products.html#industrial">Industrial Threads</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3 class="footer-links-title">Contact Us</h3>
+                        <div class="footer-contact">
+                            <p class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> 123 Industrial Area, Surat, Gujarat, India - 395001</p>
+                            <p class="footer-contact-item"><i class="fas fa-phone"></i> +91 9876543210</p>
+                            <p class="footer-contact-item"><i class="fas fa-envelope"></i> info@supremethread.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+    </footer>
+    <style>
+           /* Footer Fixes for About Page - Improved Compact Version */
+           .footer {
+            background-color: #1A3C40;
+            color: white;
+            padding: 3rem 0 0;
+            margin-top: 3rem;
+            position: relative;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo-section {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        
+        .footer-logo-img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 0.8rem;
+        }
+        
+        .footer-logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .footer-about {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+            color: #e0e0e0;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .footer-links-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.4rem;
+            color: white;
+        }
+        
+        .footer-links-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.9rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #e0e0e0;
+        }
+        
+        .footer-contact-item i {
+            margin-right: 0.7rem;
+            margin-top: 0.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            min-width: 14px;
+            text-align: center;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.2rem 0;
+            text-align: center;
+        }
+        
+        .copyright {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Super Compact Footer Links in One Row */
+        .footer-links-column:first-child .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 0;
+            gap: 8px 16px;
+            max-width: 100%;
+        }
+        
+        .footer-links-column:first-child .footer-links li {
+            margin: 0;
+            position: relative;
+            padding-right: 16px;
+        }
+        
+        .footer-links-column:first-child .footer-links li:not(:last-child)::after {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+        }
+        
+        .footer-links-column:first-child .footer-links li:last-child {
+            padding-right: 0;
+        }
+        
+        .footer-links-column:first-child .footer-links a {
+            font-size: 0.85rem;
+            white-space: nowrap;
+            padding: 2px 0;
+        }
+        
+        /* Responsive Footer - Enhanced */
+        @media (max-width: 992px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-links-section {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-logo-section {
+                max-width: 550px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            
+            .footer-logo {
+                justify-content: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .footer-links-column:first-child .footer-links {
+                justify-content: center;
+                margin: 0 auto;
+                max-width: 550px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer {
+                padding-top: 2.5rem;
+            }
+            
+            .footer-links-section {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem 1rem;
+            }
+            
+            .footer-links-column:first-child {
+                grid-column: span 2;
+            }
+            
+            .footer-links-column:first-child .footer-links {
+                justify-content: center;
+                margin-bottom: 0.5rem;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 5px;
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* IE and Edge */
+                gap: 0;
+            }
+            
+            .footer-links-column:first-child .footer-links::-webkit-scrollbar {
+                display: none; /* Chrome, Safari and Opera */
+            }
+            
+            .footer-links-column:not(:first-child) .footer-links li {
+                margin-bottom: 0.6rem;
+            }
+            
+            .footer-links-column:not(:first-child) .footer-links a {
+                padding: 6px 4px 6px 0;
+            }
+            
+            .footer-contact-item {
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .footer {
+                padding: 2rem 0 0;
+            }
+            
+            .footer-container {
+                padding: 0 1.2rem;
+            }
+            
+            .footer-main {
+                gap: 1.8rem;
+            }
+            
+            .footer-links-section {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .footer-links-column:first-child {
+                grid-column: span 1;
+                order: -1;
+            }
+            
+            .footer-links-column:nth-child(2) {
+                order: 1;
+            }
+            
+            .footer-links-column:nth-child(3) {
+                order: 0;
+            }
+            
+            .footer-links-column:first-child .footer-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 6px 12px;
+                margin: 0 auto;
+                max-width: 100%;
+            }
+            
+            .footer-links-column:first-child .footer-links li {
+                margin: 0;
+                padding-right: 12px;
+            }
+            
+            .footer-links-column:first-child .footer-links li:not(:last-child)::after {
+                right: 1px;
+            }
+            
+            .footer-links-title {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+                padding-bottom: 0.4rem;
+                text-align: center;
+            }
+            
+            .footer-links-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .footer-links-column:not(:first-child) .footer-links {
+                columns: 2;
+                column-gap: 20px;
+                text-align: center;
+            }
+            
+            .footer-links li {
+                margin-bottom: 0.4rem;
+                break-inside: avoid;
+            }
+            
+            .footer-about {
+                font-size: 0.85rem;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+            
+            .footer-contact-item {
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 280px;
+                text-align: left;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-links-column:not(:first-child) .footer-links {
+                columns: 1;
+            }
+            
+            .footer-links-column:first-child .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 4px 8px;
+            }
+            
+            .footer-links-column:first-child .footer-links li {
+                padding-right: 8px;
+            }
+            
+            .footer-links-column:first-child .footer-links li:not(:last-child)::after {
+                font-size: 0.7rem;
+            }
+            
+            .footer-contact-item {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                text-align: left;
+                flex-direction: row;
+            }
+            
+            .footer-contact-item i {
+                margin-right: 0.6rem;
+                margin-top: 0;
+                font-size: 0.9rem;
+            }
+            
+            .copyright {
+                font-size: 0.8rem;
+                line-height: 1.4;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        // Swiper initialization with advanced effects
+        var swiper = new Swiper('.product-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            centeredSlides: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+            },
+            on: {
+                slideChange: function() {
+                    // Add active-center and side-fade classes for 3D effect
+                    var slides = document.querySelectorAll('.product-card-modern');
+                    slides.forEach(function(card) {
+                        card.classList.remove('active-center', 'side-fade');
+                    });
+                    var activeIdx = this.realIndex;
+                    var allSlides = this.slides;
+                    if (allSlides[activeIdx]) allSlides[activeIdx].querySelector('.product-card-modern').classList.add('active-center');
+                    if (allSlides[activeIdx-1]) allSlides[activeIdx-1].querySelector('.product-card-modern').classList.add('side-fade');
+                    if (allSlides[activeIdx+1]) allSlides[activeIdx+1].querySelector('.product-card-modern').classList.add('side-fade');
+                },
+                init: function() {
+                    // Initial highlight
+                    var slides = document.querySelectorAll('.product-card-modern');
+                    slides.forEach(function(card) {
+                        card.classList.remove('active-center', 'side-fade');
+                    });
+                    var activeIdx = this.realIndex;
+                    var allSlides = this.slides;
+                    if (allSlides[activeIdx]) allSlides[activeIdx].querySelector('.product-card-modern').classList.add('active-center');
+                    if (allSlides[activeIdx-1]) allSlides[activeIdx-1].querySelector('.product-card-modern').classList.add('side-fade');
+                    if (allSlides[activeIdx+1]) allSlides[activeIdx+1].querySelector('.product-card-modern').classList.add('side-fade');
+                }
+            }
+        });
+        // Product filter
+        const filterBtns = document.querySelectorAll('.filter-tab');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const filterValue = this.getAttribute('data-filter');
+                document.querySelectorAll('.swiper-slide').forEach(slide => {
+                    const card = slide.querySelector('.product-card-modern');
+                    if (filterValue === 'all' || (card && card.getAttribute('data-category') === filterValue)) {
+                        slide.style.display = 'flex';
+                        // GSAP animation on show
+                        if (typeof gsap !== 'undefined') {
+                            gsap.fromTo(slide, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 });
+                        }
+                    } else {
+                        slide.style.display = 'none';
+                    }
+                });
+                // Update Swiper after filtering
+                if (window.swiper && swiper.update) {
+                    swiper.update();
+                }
+            });
+        });
+        // Pause marquee on hover
+        const marquee = document.querySelector('.feature-marquee');
+        if (marquee) {
+            marquee.addEventListener('mouseenter', () => {
+                marquee.style.animationPlayState = 'paused';
+            });
+            marquee.addEventListener('mouseleave', () => {
+                marquee.style.animationPlayState = 'running';
+            });
+        }
+        // AOS initialization (if used)
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ once: false, mirror: true, offset: 120, easing: 'ease-out-cubic' });
+        }
+        // Modal logic for product details
+        var modal = document.getElementById('product-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalClose = document.querySelector('.modal-close');
+        const productDetails = {
+            "Core-Spun Thread": {
+                desc: "A blend of polyester strength and cotton softness for durable, comfortable stitching.",
+                tags: ["Polyester", "Cotton", "Low Lint", "Durable"]
+            },
+            "Rayon Embroidery Thread": {
+                desc: "High-sheen, vibrant thread perfect for decorative embroidery.",
+                tags: ["Rayon", "Shiny", "Vibrant", "Embroidery"]
+            },
+            "Technical Thread": {
+                desc: "Industrial-grade thread offering flame retardance and oil resistance.",
+                tags: ["Industrial", "Flame Retardant", "Oil Resistant"]
+            },
+            "Premium Cotton Thread": {
+                desc: "Soft, long-staple cotton thread for high-quality sewing projects.",
+                tags: ["Cotton", "Soft", "Premium"]
+            },
+            "Mercerized Cotton Thread": {
+                desc: "Enhanced cotton thread with extra sheen and strength for decorative use.",
+                tags: ["Mercerized", "Sheen", "Strong"]
+            },
+            "All-Purpose Polyester Thread": {
+                desc: "Versatile thread offering strength and durability for many applications.",
+                tags: ["Polyester", "UV Resistant", "Versatile"]
+            },
+            "Heavy-Duty Polyester Thread": {
+                desc: "Robust thread designed for upholstery and outdoor gear.",
+                tags: ["Heavy Duty", "Upholstery", "Outdoor"]
+            },
+            "Standard Nylon Thread": {
+                desc: "Elastic, heat resistant thread ideal for stretchy fabrics and leather.",
+                tags: ["Nylon", "Elastic", "Heat Resistant"]
+            },
+            "Bonded Nylon Thread": {
+                desc: "Resin-coated nylon thread offering extra strength and abrasion resistance.",
+                tags: ["Bonded", "Abrasion Resistant", "Strong"]
+            }
+        };
+        function openProductModal(img, title, desc, tags) {
+            modalImg.src = img;
+            modalTitle.textContent = title || 'Product Name';
+            modalDesc.textContent = desc || 'No description available for this product.';
+            const tagsDiv = document.getElementById('modal-tags');
+            tagsDiv.innerHTML = (tags && tags.length) ? tags.map(tag => `<span class="modal-tag">${tag}</span>`).join(' ') : '';
+            modal.style.display = 'flex';
+            modal.style.animation = 'modalIn 0.38s cubic-bezier(.4,2,.6,1)';
+        }
+        // Attach click event to mobile product buttons
+        document.querySelectorAll('.mobile-product-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = btn.closest('.mobile-product-card');
+                const img = card.querySelector('img').src;
+                const title = card.querySelector('.mobile-product-title').textContent;
+                const details = productDetails[title] || {desc: '', tags: []};
+                openProductModal(img, title, details.desc, details.tags);
+            });
+        });
+        // Attach click event to all product buttons (fix for .example-btn)
+        document.querySelectorAll('.product-card-modern .example-btn.learn-more-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = btn.closest('.product-card-modern');
+                const img = card.querySelector('img').src;
+                const title = card.querySelector('.product-title-modern').textContent;
+                const details = productDetails[title] || {desc: '', tags: []};
+                openProductModal(img, title, details.desc, details.tags);
+            });
+        });
+        // Only declare modal variable ONCE at the top for all modal logic
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.animation = 'modalIn 0.38s reverse forwards';
+                    setTimeout(() => { modal.style.display = 'none'; }, 380);
+                }
+            });
+        }
+        // Modal close logic for new close button
+        var modalCloseBtn = document.getElementById('modal-close-btn');
+        if (modalCloseBtn) {
+            modalCloseBtn.onclick = function() {
+                modal.style.animation = 'modalIn 0.38s reverse forwards';
+                setTimeout(() => { modal.style.display = 'none'; }, 380);
+            }
+        }
+        // Add horizontal scroll with arrow buttons (mobile)
+        const scrollContainer = document.querySelector('.mobile-products-scroll');
+        document.querySelector('.mobile-nav-prev').addEventListener('click', function() {
+            scrollContainer.scrollBy({ left: -220, behavior: 'smooth' });
+        });
+        document.querySelector('.mobile-nav-next').addEventListener('click', function() {
+            scrollContainer.scrollBy({ left: 220, behavior: 'smooth' });
+        });
+        // Animate product cards on scroll into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.mobile-product-card').forEach(card => {
+            observer.observe(card);
+        });
+        // Animate modal open/close (optional: add close on background click)
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.animation = 'modalIn 0.38s reverse forwards';
+                    setTimeout(() => { modal.style.display = 'none'; }, 380);
+                }
+            });
+        }
+    </script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
